@@ -2,6 +2,7 @@ import Tarjeta from '../../../components/Tarjeta'
 
 function ConsejoNutricion(props) {
 
+//Cambia el color del borde de la tarjeta al pasar el mouse probando 123
     function cambiarColor(tarjeta) {
         let r = Math.floor(Math.random() * 150)
         let g = Math.floor(Math.random() * 150)

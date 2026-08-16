@@ -2,6 +2,43 @@
     width: 90%;
 }
 
+.filtros-categoria {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 12px;
+    margin-bottom: 35px;
+    padding: 10px 0;
+}
+
+.btn-filtro {
+    background-color: #f3f4f6;
+    color: var(--color-neutro-300);
+    border: 2px solid transparent;
+    padding: 8px 18px;
+    border-radius: 25px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+    outline: none;
+}
+
+
+.btn-filtro:hover {
+    background-color: #e5e7eb;
+    transform: translateY(-2px);
+}
+
+
+.btn-filtro.activo {
+    background-color: #008080; 
+    color: #ffffff;
+    border-color: #008080;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+
 .aprendiendo-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -42,5 +79,4 @@
     color: var(--color-neutro-300);
     line-height: 1.5;
 }
-
 

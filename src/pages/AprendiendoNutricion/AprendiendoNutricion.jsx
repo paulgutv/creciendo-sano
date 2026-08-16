@@ -1,14 +1,21 @@
+import React, { useState } from 'react'
 import Hero from "../../components/Hero"
 import imagen from './assets/hero.png'
 import Nav from "../../components/Nav"
 import imagenNav from './assets/icono-nav.png'
 import Footer from "../../components/Footer"
 import ConsejoNutricion from './components/ConsejoNutricion'
-import { consejosNutricion } from './data'
+import { consejosNutricion, categorias } from './data'
 import './AprendiendoNutricion.css'
 
-
 function AprendiendoNutricion(props){
+    const [categoriaActiva, setCategoriaActiva] = useState('todas')
+
+    // Filtrado de consejos según la categoría seleccionda
+    const consejosFiltrados = categoriaActiva === 'todas'
+        ? consejosNutricion
+        : consejosNutricion.filter(item => item.categoria === categoriaActiva)
+
     return (
         <>
         <Hero
@@ -22,8 +29,23 @@ function AprendiendoNutricion(props){
         <Nav paginaActiva={props.paginaActiva} onCambiarPagina={props.onCambiarPagina} imagenNav={imagenNav}/>
 
         <main className="contenedor aprendiendo-contenido">
+
+            {/* Seccción de Filtros x Categoría*/}
+            <section className="filtros-categoria">
+                {categorias.map((cat) => (
+                    <button
+                        key={cat.key}
+                        className={`btn-filtro ${categoriaActiva === cat.key ? 'activo' : ''}`}
+                        onClick={() => setCategoriaActiva(cat.key)}
+                    >
+                        {cat.label}
+                    </button>
+                ))}
+            </section>
+
+            {/* GridContenido Filtrado */}
             <section className="aprendiendo-grid">
-                {consejosNutricion.map((consejo) => (
+                {consejosFiltrados.map((consejo) => (
                     <ConsejoNutricion
                         key={consejo.id}
                         paginaActiva={props.paginaActiva}
