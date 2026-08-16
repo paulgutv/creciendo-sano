@@ -1,7 +1,3 @@
-.extra {
-    display: block;
-}
-
 .extra .info {
     background-color: var(--color-secundario-magenta-100);
     padding: 20px;

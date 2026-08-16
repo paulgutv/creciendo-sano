@@ -25,7 +25,7 @@ function MenuGenerado(props) {
                 {props.menuSemana.map((dia, index) => {
                     const hayOpcion = props.puedeCambiar(index)
                     return(
-                    <div className="tarjeta-menu" key={dia.dia}>
+                    <div className="tarjeta-menu" key={dia.id}>
                         <div>
                             <h3 className="dia">{dia.dia}</h3>
                             <h4 className="razon">{dia.razonDescripcion}</h4>

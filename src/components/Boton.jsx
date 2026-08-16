@@ -14,17 +14,22 @@ Para usar el componente, importalo y usa estas propiedades. Por ejemplo:
 
 
 import './Boton.css'
-import { paginas } from '../data/shared' 
+import { paginas } from '../data/shared'
+import { useLocation } from 'react-router-dom'
 
-function Boton(props){
+function Boton(props) {
+    const location = useLocation()
 
-    const seccion = paginas.find((e) => e.id == props.paginaActiva)
+    // Detecta la sección activa según la ruta actual de la URL
+    const seccion = paginas.find((e) => e.ruta === location.pathname) || paginas[0]
 
     return (
-        <button className='boton texto-m'
-        style={{backgroundColor: seccion.color}}
-        onClick={props.onClick}
-        type={props.type || 'button'}>
+        <button
+            className="boton texto-m"
+            style={{ backgroundColor: seccion.color }}
+            onClick={props.onClick}
+            type={props.type || 'button'}
+        >
             {props.texto}
         </button>
     )

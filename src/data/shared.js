@@ -2,26 +2,51 @@ export const paginas = [
     {
         id: 'generacionMenu',
         nombre: 'Generación de Menú',
+        ruta: '/',
         color: 'var(--color-primario-500)',
         colorClaro: 'var(--color-primario-300)'
     },
     {
         id: 'aprendiendoNutricion',
         nombre: 'Aprendiendo Nutrición',
+        ruta: '/aprendiendo-nutricion',
         color: 'var(--color-secundario-magenta-500)',
         colorClaro: 'var(--color-secundario-magenta-300)'
     },
     {
         id: 'calculadoraNutricional',
         nombre: 'Calculadora Nutricional',
+        ruta: '/calculadora-nutricional',
         color: 'var(--color-secundario-purpura-500)',
         colorClaro: 'var(--color-secundario-purpura-300)'
     },
     {
         id: 'sobreProyecto',
         nombre: 'Sobre el Proyecto',
+        ruta: '/sobre-proyecto',
         color: 'var(--color-secundario-naranja-500)',
         colorClaro: 'var(--color-secundario-naranja-300)'
+    },
+    {
+        id: 'login',
+        nombre: 'Login',
+        ruta: '/login',
+        color: 'var(--color-secundario-morado-500)',
+        colorClaro: 'var(--color-secundario-morado-300)',
+    },
+    {
+        id: 'registro',
+        nombre: 'Registro',
+        ruta: '/registro',
+        color: 'var(--color-secundario-morado-500)',
+        colorClaro: 'var(--color-secundario-morado-300)',
+    },
+    {
+        id: 'dashboard',
+        nombre: 'Dashboard',
+        ruta: '/dashboard',
+        color: 'var(--color-secundario-morado-500)',
+        colorClaro: 'var(--color-secundario-morado-300)',
     },
 ]
 

@@ -68,6 +68,7 @@
     border: none;
     color: var(--color-neutro-100);
     cursor: pointer;
+    text-decoration: none;
 }
 
 .footer .contenedor-proyecto .descripcion, .contenedor-navegacion p, .contenedor-datos a, .contenedor-ayuda p {

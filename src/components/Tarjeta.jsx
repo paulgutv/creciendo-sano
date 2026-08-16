@@ -38,17 +38,21 @@ function GeneracionMenu(props){
 
 
 import './Tarjeta.css'
-import { paginas } from '../data/shared' 
+import { paginas } from '../data/shared'
+import { useLocation } from 'react-router-dom'
 
 function Tarjeta(props) {
+    const location = useLocation()
 
-    const seccion = paginas.find((e) => e.id == props.paginaActiva)
+    // Detecta la sección activa según la ruta de la URL actual
+    const seccion = paginas.find((e) => e.ruta === location.pathname) || paginas[0]
 
     return (
         <div className="tarjeta">
             <div
-            className="titulo"
-            style={{backgroundColor: seccion.color}}>
+                className="titulo"
+                style={{ backgroundColor: seccion.color }}
+            >
                 <h3>{props.titulo}</h3>
             </div>
             <div className="cuerpo">

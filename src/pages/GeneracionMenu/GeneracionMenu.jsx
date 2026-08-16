@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Hero from "../../components/Hero"
 import imagen from './assets/hero.png'
 import Nav from "../../components/Nav"
@@ -8,13 +8,38 @@ import Perfil from "./components/Perfil"
 import Menu from "./components/Menu"
 import MenuGenerado from "./components/MenuGenerado"
 import Info from "./components/Info"
-import { menus, diasSemana } from "./data"
+//import { menus, diasSemana } from "./data"
+import { obtenerColeccion } from "../../services/firestoreService"
 import './GeneracionMenu.css'
+
 
 function GeneracionMenu(props){
     const [menuFueGenerado, setMenuFueGenerado] = useState(false)
     const [menuSemana, setMenuSemana] = useState([])
     const [datosPerfil, setDatosPerfil] = useState(null)
+
+    const [datosCargados, setDatosCargados] = useState(false)
+    const [menus, setMenus] = useState([])
+    const [diasSemana, setDiasSemana] = useState([])
+
+    useEffect(() => {
+        const cargarTodo = async () => {
+            const [listaMenus, listaDias] = await Promise.all([
+                obtenerColeccion('menus'),
+                obtenerColeccion('diasSemana'),
+            ])
+
+            const ordenDias = ['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo']
+            const listaDiasOrdenada = [...listaDias].sort(
+                (a, b) => ordenDias.indexOf(a.id) - ordenDias.indexOf(b.id)
+            )
+
+            setMenus(listaMenus)
+            setDiasSemana(listaDiasOrdenada)
+            setDatosCargados(true)
+        }
+        cargarTodo()
+    }, [])
 
     // Crea un array de opciones de menús para un día que encajan con la razon, la edad recomendada y la ausencia de ingredientes seleccionados
     const generarPlatosValidosDia = (razon, edad, evitar) => {
@@ -53,6 +78,7 @@ function GeneracionMenu(props){
 
         for (const plato of opcionesOrdenadas) {
             const itemDia = {
+                id: diaActual.id,
                 dia: diaActual.dia,
                 razonDescripcion: diaActual.descripcion,
                 razon: diaActual.razon,
@@ -93,6 +119,10 @@ function GeneracionMenu(props){
         } else {
             setMenuSemana(resultadoOptimo)
             setMenuFueGenerado(true)
+        }
+
+        if (!datosCargados) {
+            return <p>Cargando...</p>
         }
     }
 
@@ -184,7 +214,7 @@ function GeneracionMenu(props){
                             paginaActiva={props.paginaActiva}
                         />
                     }
-                </section>
+                </section>               
             </div>
             <Footer
                 paginaActiva={props.paginaActiva}

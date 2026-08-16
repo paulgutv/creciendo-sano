@@ -15,26 +15,43 @@ Para usar el componente, importalo y usa estas propiedades. Por ejemplo:
 =====================*/
 
 import './Hero.css'
-import { paginas } from '../data/shared' 
+import { paginas } from '../data/shared'
+import { useLocation } from 'react-router-dom'
+import { useAuth } from '../services/useAuth'
+import { cerrarSesion } from '../services/authService'
+
 
 function Hero(props) {
+    const location = useLocation()
+    const { usuario } = useAuth()
 
-    const seccion = paginas.find((e) => e.id == props.paginaActiva)
+    // Busca la página actual coincidiendo con la ruta del navegador (o toma la primera por defecto)
+    const seccion = paginas.find((e) => e.ruta === location.pathname) || paginas[0]
 
-    return(
-        <section className="hero">
-                <div className="contenedor" style={{backgroundColor: seccion.color}}>
-                    <div className='izq'>
+    return (
+        <div>
+            {usuario && (
+                <div className="contenedor login-sesion">
+                    <span className="login-sesion-nombre texto-s">Bienvenido/a {usuario.email}</span>
+                    <button className="login-sesion-logout texto-s" onClick={cerrarSesion}>
+                        Logout
+                    </button>
+                </div>
+            )}
+            <section className="hero">
+                <div className="contenedor" style={{ backgroundColor: seccion.color }}>
+                    <div className="izq">
                         <div className="contenedor-logo">
-                            <div className='logo'></div>
-                            <p className='logo-texto logotipo-m'>Creciendo sano</p>
+                            <div className="logo"></div>
+                            <p className="logo-texto logotipo-m">Creciendo sano</p>
                         </div>
                         <h1>{props.titulo}</h1>
-                        <p className='texto-l descripcion'>{props.descripcion}</p>
+                        <p className="texto-l descripcion">{props.descripcion}</p>
                     </div>
                     <img src={props.imagen} alt={props.alt} />
                 </div>
-        </section>
+            </section>
+        </div>
     )
 }
 

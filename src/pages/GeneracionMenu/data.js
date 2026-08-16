@@ -9,13 +9,13 @@ export const restriccionesAlimentarias = [
 ];
 
 export const diasSemana = [
-  { dia: 'LUNES', razon: 'menestras', descripcion: 'Menestras y recarga de energía' },
-  { dia: 'MARTES', razon: 'hierro', descripcion: 'Gran aporte de hierro' },
-  { dia: 'MIÉRCOLES', razon: 'calcio', descripcion: 'Proteína para el crecimiento' },
-  { dia: 'JUEVES', razon: 'fibra', descripcion: 'Nutrición familiar y economía' },
-  { dia: 'VIERNES', razon: 'omega3', descripcion: 'Omega 3 para el cerebro' },
-  { dia: 'SÁBADO', razon: 'proteinaMagra', descripcion: 'Proteína balanceada en familia' },
-  { dia: 'DOMINGO', razon: 'variedad', descripcion: 'Menú de fácil preparación' },
+  { id: 'lunes', dia: 'LUNES', razon: 'menestras', descripcion: 'Menestras y recarga de energía' },
+  { id: 'martes', dia: 'MARTES', razon: 'hierro', descripcion: 'Gran aporte de hierro' },
+  { id: 'miercoles', dia: 'MIÉRCOLES', razon: 'calcio', descripcion: 'Proteína para el crecimiento' },
+  { id: 'jueves', dia: 'JUEVES', razon: 'fibra', descripcion: 'Nutrición familiar y economía' },
+  { id: 'viernes', dia: 'VIERNES', razon: 'omega3', descripcion: 'Omega 3 para el cerebro' },
+  { id: 'sabado', dia: 'SÁBADO', razon: 'proteinaMagra', descripcion: 'Proteína balanceada en familia' },
+  { id: 'domingo', dia: 'DOMINGO', razon: 'variedad', descripcion: 'Menú de fácil preparación' },
 ];
 
 export const menus = [
@@ -69,16 +69,19 @@ export const consejos = [
 
 export const recomendacionesPorEdad = [
     {
+        id: 'edad-3-5',
         edadMin: 3,
         edadMax: 5,
         texto: 'Para niños de 3 a 5 años, es la etapa de formar hábitos y probar nuevos sabores. Asegura 2 porciones diarias de origen animal (huevo, pollo, pescado) y sirve los alimentos en trozos seguros.'
     },
     {
+        id: 'edad-6-8',
         edadMin: 6,
         edadMax: 8,
         texto: 'Para niños de 6 a 8 años, con mayor actividad escolar y física, se necesita energía sostenida. Prioriza el hierro de la sangrecita, hígado o pescado azul para prevenir la anemia y apoyar su aprendizaje.'
     },
     {
+        id: 'edad-9-11',
         edadMin: 9,
         edadMax: 11,
         texto: 'Para niños de 9 a 11 años, próximos al estirón puberal, aumentan las necesidades de energía y proteína. Para un plato balanceado, sirve la mitad con verduras, un cuarto con carne/huevo y un cuarto con arroz/tubérculos.'
