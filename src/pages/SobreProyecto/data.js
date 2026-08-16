@@ -17,3 +17,11 @@ export const somos = [
     texto: 'Somos un grupo de estudiantes de Computación e Informática que decidimos construir algo más que un proyecto de curso. Nos preocupa que muchas familias peruanas quieran alimentar bien a sus hijos, pero no siempre encuentren la información al alcance de la mano, o no sepan cómo hacerlo rendir con el presupuesto que tienen. Por eso creamos Creciendo Sano: una herramienta que junta datos oficiales del INS y MIDAGRI con el criterio de un pediatra, para que planificar la semana de tu hijo sea más simple, sin dejar de ser saludable.'
   }
 ]
+
+export const comentariosIniciales = [
+  {
+    id: 1,
+    nombre: 'Lucía M.',
+    texto: 'Excelente herramienta. Me ayudó mucho a planificar los menús considerando el presupuesto de mi hogar.'
+  }
+];
