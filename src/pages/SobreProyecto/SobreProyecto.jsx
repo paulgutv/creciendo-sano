@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Hero from "../../components/Hero"
 import imagen from './assets/hero.png'
 import Nav from "../../components/Nav"
@@ -6,41 +7,59 @@ import imagenNav from './assets/icono-nav.png'
 import Footer from "../../components/Footer"
 import Tarjeta from "../../components/Tarjeta";
 import ModalSugerencia from "../SobreProyecto/components/ModalSugerencia.jsx";
-import { preguntasFrecuentes, comentariosIniciales, somos } from './data.js';
+import { preguntasFrecuentes, somos } from './data.js';
 import ModalTodosComentarios from "../SobreProyecto/components/ModalTodosComentarios.jsx";
+import Acordeon from "./components/Acordeon"
+import { obtenerOpiniones, guardarOpinion } from "../../services/comentarioService.js";
+import { useAuth } from "../../services/useAuth";
 import './SobreProyecto.css';
 
 
 
-function SobreProyecto(props){
-   
-    const [preguntaAbierta, setPreguntaAbierta] = useState(null);
-
-   
-  const [modalAbierto, setModalAbierto] = useState(false);
-  const [modalVerTodos, setModalVerTodos] = useState(false); 
-
+function SobreProyecto(props){  
+    const [modalAbierto, setModalAbierto] = useState(false);
+    const [modalVerTodos, setModalVerTodos] = useState(false);
  
-  const [comentarios, setComentarios] = useState(comentariosIniciales);
+    const [comentarios, setComentarios] = useState([]);
+    const [cargandoComentarios, setCargandoComentarios] = useState(true);
 
+    const { usuario } = useAuth();
+    const navigate = useNavigate();
 
-
-    const alternarPregunta = (id) => {
-        if (preguntaAbierta === id) {
-            setPreguntaAbierta(null);
-        } else {
-            setPreguntaAbierta(id);
+    const cargarComentarios = async () => {
+        try {
+        const datos = await obtenerOpiniones();
+        setComentarios(datos);
+        } catch (error) {
+        console.log("Error al traer opiniones:", error);
+        } finally {
+        setCargandoComentarios(false);
         }
     };
 
-    const LIMITE_HISTORIAL = 10;
-
-    const agregarComentario = (nuevoComentario) => {
-    setComentarios([nuevoComentario, ...comentarios.slice(0,LIMITE_HISTORIAL)]);
-  };
+    useEffect(() => {
+        cargarComentarios();
+    }, []);
 
 
-  const comentariosRecientes = comentarios.slice(0, 5);
+    const agregarComentario = async (nuevoComentario) => {
+        try {
+        const guardado = await guardarOpinion(nuevoComentario);
+        setComentarios((prev) => [guardado, ...prev]);
+        } catch (error) {
+        console.log("Error al guardar opinión:", error);
+        }
+    };
+
+    const handleAbrirModal = () => {
+        if (!usuario) {
+            navigate("/login");
+            return;
+        }
+        setModalAbierto(true);
+    };
+
+    const comentariosRecientes = comentarios.slice(0, 5);
 
     return (
         <>
@@ -64,24 +83,8 @@ function SobreProyecto(props){
         </div>
 
         <div id="preguntas-frecuentes" className="seccion-bloque">
-          <h2 className="subtitulo-seccion">PREGUNTAS FRECUENTES</h2>
-          <div className="lista-faqs">
-            {preguntasFrecuentes.map((item) => (
-              <div key={item.id} className="item-faq">
-                <button 
-                  className="boton-faq texto-m"
-                  onClick={() => alternarPregunta(item.id)}
-                >
-                  {item.pregunta}
-                </button>
-                {preguntaAbierta === item.id && (
-                  <Tarjeta paginaActiva={props.paginaActiva}>
-                    <p className="texto-m">{item.respuesta}</p>
-                  </Tarjeta>
-                )}
-              </div>
-            ))}
-          </div>
+            <h2 className="subtitulo-seccion">PREGUNTAS FRECUENTES</h2>
+            <Acordeon items={preguntasFrecuentes} />
         </div>
 
         {/* SECCIÓN OPINIONES Y SUGERENCIAS */}
@@ -89,10 +92,12 @@ function SobreProyecto(props){
           <h2 className="subtitulo-seccion">OPINIONES Y SUGERENCIAS</h2>
           
           <div className="contenedor-btn-opinion">
-            <button className="btn-abrir-modal" onClick={() => setModalAbierto(true)}>
+            <button className="btn-abrir-modal" onClick={handleAbrirModal}>
                DEJAR UNA OPINIÓN O SUGERENCIA
             </button>
           </div>
+
+          {cargandoComentarios? <p>Cargando comentarios...</p>: null}
 
           {/* Muestra solo los 5 comentarios más recientes */}
           <div className="lista-comentarios">

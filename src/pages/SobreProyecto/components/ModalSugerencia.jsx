@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 function ModalSugerencia({ estaAbierto, alCerrar, alPublicar }) {
   const [nombre, setNombre] = useState('');
@@ -11,8 +11,10 @@ function ModalSugerencia({ estaAbierto, alCerrar, alPublicar }) {
     if (!nombre.trim() || !comentario.trim()) return;
 
     alPublicar({
-      id: Date.now(),
-      nombre,
+      //id: Date.now(),
+      //nombre,
+      //texto: comentario
+      nombre: nombre,
       texto: comentario
     });
 
