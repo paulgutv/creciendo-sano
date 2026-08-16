@@ -1,6 +1,7 @@
 
 
 
+
 .sobre-proyecto-contenido {
   max-width: 800px; 
   width: 90%;       
@@ -46,9 +47,6 @@
   background-color: #e07b28;
 }
 
-.texto {
-  color: var(--color-neutro-300);
-}
 
 .respuesta-faq {
   margin-top: 8px;
@@ -61,4 +59,158 @@
 
 .email-contacto {
   margin-top: 10px;
+}
+
+/* Botón para abrir el Modal */
+.contenedor-btn-opinion {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.btn-abrir-modal {
+  background-color: #f38230;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(243, 130, 48, 0.3);
+  transition: transform 0.2s;
+}
+
+.btn-abrir-modal:hover {
+  transform: scale(1.02);
+}
+
+/* Tarjetas de comentarios publicados */
+.lista-comentarios {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.tarjeta-comentario {
+  background: white;
+  border-left: 5px solid #f38230;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.autor-comentario {
+  display: block;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+.texto-comentario {
+  color: #555;
+  margin: 0;
+}
+
+/* Estilos de la Ventana Emergente (Modal) */
+.overlay-modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.contenido-modal {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 450px;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.btn-cerrar-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  cursor: pointer;
+  color: #888;
+}
+
+.titulo-modal {
+  color: #f38230;
+  margin-top: 0;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.campo-formulario {
+  margin-bottom: 15px;
+}
+
+.label-formulario {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.input-formulario {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.textarea-formulario {
+  resize: vertical;
+}
+
+.btn-enviar-opinion {
+  width: 100%;
+  background-color: #f38230;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+
+
+/* boto de hisstorial */
+.btn-ver-todos {
+  background: transparent;
+  border: none;
+  color: #f38230;
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Modal más amplio para el historial */
+.contenido-modal.modal-grande {
+  max-width: 600px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Scroll interno para cuando haya decenas de opiniones */
+.lista-comentarios-completa {
+  overflow-y: auto;
+  max-height: 60vh;
+  padding-right: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
