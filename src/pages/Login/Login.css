@@ -12,13 +12,14 @@
     border-radius: 20px;
 }
 
-.formulario-contenedor {
+.login-contenedor .formulario-contenedor {
     display: flex;
     flex-direction: column;
     height: 100%;
     justify-content: center;
     gap: 60px;
     color: var(--color-neutro-300);
+    padding: 75px 0;
 }
 
 .formulario-contenedor .bienvenida {

@@ -55,7 +55,7 @@ function Registro() {
         <Tarjeta titulo="CREAR CUENTA">
           <div className="formulario-contenedor">
             <div className="bienvenida">
-              <h1>¡Únete a nosotros!</h1>
+              <h1>Únete y explora más</h1>
               <h3>Crea tu cuenta para empezar</h3>
             </div>
 
