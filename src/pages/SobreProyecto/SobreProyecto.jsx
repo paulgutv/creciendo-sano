@@ -6,7 +6,7 @@ import imagenNav from './assets/icono-nav.png'
 import Footer from "../../components/Footer"
 import Tarjeta from "../../components/Tarjeta";
 import ModalSugerencia from "../SobreProyecto/components/ModalSugerencia.jsx";
-import { preguntasFrecuentes, comentariosIniciales } from './data.js';
+import { preguntasFrecuentes, comentariosIniciales, somos } from './data.js';
 import ModalTodosComentarios from "../SobreProyecto/components/ModalTodosComentarios.jsx";
 import './SobreProyecto.css';
 
@@ -45,9 +45,9 @@ function SobreProyecto(props){
     return (
         <>
        <Hero
-        titulo='titulo'
-        descripcion='descripcion'
-        alt='alt'
+        titulo='Conoce la historia detrás de Creciendo Sano'
+        descripcion='Por qué existe este proyecto y quiénes lo hicieron posible'
+        alt='foco'
         imagen={imagen}
         paginaActiva={props.paginaActiva}
       />
@@ -57,8 +57,8 @@ function SobreProyecto(props){
       <div className="sobre-proyecto-contenido">
         <div id="quienes-somos" className="seccion-bloque">
           <Tarjeta paginaActiva={props.paginaActiva} titulo="¿QUIÉNES SOMOS?">
-            <p className="texto-m">
-              Somos un grupo de estudiantes de Computación e Informática que decidimos construir algo más que un proyecto de curso...
+            <p className="texto texto-m">
+               {somos[0].texto}
             </p>
           </Tarjeta>
         </div>
