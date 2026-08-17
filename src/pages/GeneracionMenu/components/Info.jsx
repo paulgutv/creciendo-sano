@@ -2,8 +2,6 @@ import { useState, useEffect } from "react"
 import Tarjeta from "../../../components/Tarjeta"
 import icono from '../assets/foco.png'
 import { obtenerColeccion } from "../../../services/firestoreService"
-
-//import { consejos, recomendacionesPorEdad } from "../data"
 import './Info.css'
 
 function Info(props) {
@@ -51,7 +49,6 @@ function Info(props) {
     return(
         <div>
             <Tarjeta
-                paginaActiva={props.paginaActiva}
                 titulo = 'INFORMACIÓN Y CONSEJOS'
             >
                 <div className="extra">

@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react"
 import Boton from "../../../components/Boton"
 import Tarjeta from "../../../components/Tarjeta"
-//import { edades, restriccionesAlimentarias } from "../data"
 import './Perfil.css'
 import { obtenerColeccion, obtenerDocumento } from "../../../services/firestoreService"
 import { useAuth } from "../../../services/useAuth"

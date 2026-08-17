@@ -29,7 +29,7 @@ export const paginas = [
     },
     {
         id: 'login',
-        nombre: 'Login',
+        nombre: 'Iniciar Sesión',
         ruta: '/login',
         color: 'var(--color-secundario-morado-500)',
         colorClaro: 'var(--color-secundario-morado-300)',

@@ -3,7 +3,6 @@ import { collection, getDocs, addDoc, serverTimestamp, query, orderBy } from "fi
 
 const coleccionOpiniones = collection(db, "opiniones")
 
-// Obtener opiniones ordenadas de la más reciente a la más antigua
 export const obtenerOpiniones = async () => {
   const consulta = query(coleccionOpiniones, orderBy("fecha", "desc"))
   const snapshot = await getDocs(consulta)
@@ -13,7 +12,6 @@ export const obtenerOpiniones = async () => {
   }))
 }
 
-// Guardar una nueva opinión
 export const guardarOpinion = async (nuevaOpinion) => {
   const docRef = await addDoc(coleccionOpiniones, {
     ...nuevaOpinion,

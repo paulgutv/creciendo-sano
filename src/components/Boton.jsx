@@ -2,7 +2,7 @@
 Para usar el componente, importalo y usa estas propiedades. Por ejemplo:
 
 <Boton
-    paginaActiva={props.paginaActiva}    <- esta siempre (cambia el color de fondo, no modificar)
+    
     texto = 'SoyUnBoton'                 <- esta es el texto del boton
     onClick = {soyUnaFuncion}            <- esta es la llamada a la función de tu boton
     type='submit'                        <- opcional, por defecto es 'button' (no recarga la página)

@@ -8,12 +8,11 @@ import Perfil from "./components/Perfil"
 import Menu from "./components/Menu"
 import MenuGenerado from "./components/MenuGenerado"
 import Info from "./components/Info"
-//import { menus, diasSemana } from "./data"
 import { obtenerColeccion } from "../../services/firestoreService"
 import './GeneracionMenu.css'
 
 
-function GeneracionMenu(props){
+function GeneracionMenu(){
     const [menuFueGenerado, setMenuFueGenerado] = useState(false)
     const [menuSemana, setMenuSemana] = useState([])
     const [datosPerfil, setDatosPerfil] = useState(null)
@@ -176,25 +175,20 @@ function GeneracionMenu(props){
                 descripcion='Con consejos prácticos y ajustados a tu presupuesto'
                 alt='alt'
                 imagen={imagen}
-                paginaActiva={props.paginaActiva}
             />
             <Nav
-                paginaActiva={props.paginaActiva}
-                onCambiarPagina={props.onCambiarPagina}
                 imagenNav={imagenNav}
             />
             <div className="contenedor contenedor-secciones">
                 <div className="contenedor-secciones-izquierda">
                     <section className="contenedor-perfil">
                         <Perfil
-                            paginaActiva={props.paginaActiva}
                             onGenerarMenu={generarMenuSemanal}
                         />
                     </section>
                     {menuFueGenerado && (
                         <section className="contenedor-info">
                             <Info
-                                paginaActiva={props.paginaActiva}
                                 evitar={datosPerfil.evitar}
                                 edad={datosPerfil.edad}
                             />
@@ -204,21 +198,17 @@ function GeneracionMenu(props){
                 <section className="contenedor-menu">
                     {menuFueGenerado
                         ? <MenuGenerado
-                            paginaActiva={props.paginaActiva}
                             menuSemana={menuSemana}
                             onCambiarPlato={cambiarPlatoDelDia}
                             presupuesto={datosPerfil.presupuesto}
                             puedeCambiar={puedeCambiar}
                         />
                         : <Menu
-                            paginaActiva={props.paginaActiva}
                         />
                     }
                 </section>               
             </div>
             <Footer
-                paginaActiva={props.paginaActiva}
-                onCambiarPagina={props.onCambiarPagina}
             />
         </>
     )

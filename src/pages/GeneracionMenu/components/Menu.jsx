@@ -1,11 +1,10 @@
 import Tarjeta from "../../../components/Tarjeta"
 import './Menu.css'
 
-function Menu(props) {
+function Menu() {
     return(
         <div>
             <Tarjeta
-                paginaActiva={props.paginaActiva}
                 titulo = 'MENÚ SEMANAL'               
             >
                 <div className="menu-inicial">

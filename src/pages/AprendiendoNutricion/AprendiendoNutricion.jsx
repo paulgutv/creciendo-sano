@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Hero from "../../components/Hero"
 import imagen from './assets/hero.png'
 import Nav from "../../components/Nav"
@@ -8,7 +8,7 @@ import ConsejoNutricion from './components/ConsejoNutricion'
 import { consejosNutricion, categorias } from './data'
 import './AprendiendoNutricion.css'
 
-function AprendiendoNutricion(props){
+function AprendiendoNutricion(){
     const [categoriaActiva, setCategoriaActiva] = useState('todas')
 
     // Filtrado de consejos según la categoría seleccionda
@@ -23,10 +23,9 @@ function AprendiendoNutricion(props){
             descripcion = 'Explicaciones simples y sin tecnicismos'
             alt = 'Libro abierto sobre nutrición infantil'
             imagen = {imagen}
-            paginaActiva= {props.paginaActiva}
         />
 
-        <Nav paginaActiva={props.paginaActiva} onCambiarPagina={props.onCambiarPagina} imagenNav={imagenNav}/>
+        <Nav imagenNav={imagenNav}/>
 
         <main className="contenedor aprendiendo-contenido">
 
@@ -48,7 +47,6 @@ function AprendiendoNutricion(props){
                 {consejosFiltrados.map((consejo) => (
                     <ConsejoNutricion
                         key={consejo.id}
-                        paginaActiva={props.paginaActiva}
                         titulo={consejo.titulo}
                         texto={consejo.texto}
                         imagen={consejo.imagen}
@@ -58,7 +56,7 @@ function AprendiendoNutricion(props){
             </section>
         </main>
 
-        <Footer paginaActiva={props.paginaActiva} onCambiarPagina={props.onCambiarPagina}/>
+        <Footer/>
         </>
     )
 }

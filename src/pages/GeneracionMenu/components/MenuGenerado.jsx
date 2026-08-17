@@ -4,7 +4,7 @@ import './MenuGenerado.css'
 function MenuGenerado(props) {
     if (props.menuSemana == null) {
         return (
-            <Tarjeta className='aaaa' paginaActiva={props.paginaActiva} titulo='MENÚ SEMANAL'>
+            <Tarjeta className='aaaa' titulo='MENÚ SEMANAL'>
                 <p className="error-general texto-m">Por el momento, no hay opciones disponibles para el presupuesto asignado y/o alimentos seleccionados.</p>
             </Tarjeta>
         )
@@ -18,7 +18,6 @@ function MenuGenerado(props) {
 
     return(
         <Tarjeta
-            paginaActiva={props.paginaActiva}
             titulo='MENÚ SEMANAL'
         >
             <div className="menu-oculto">
